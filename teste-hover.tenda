@@ -1,0 +1,22 @@
+// Teste de hover - passe o mouse sobre as palavras destacadas
+
+seja nome = "Teste"
+
+se nome é "Teste" então
+  exiba("Funcionou!")
+senão
+  exiba("Não funcionou")
+fim
+
+para cada i em 1 até 3 faça
+  exiba("Número: " + i)
+fim
+
+seja teste() =
+  faça
+    seja resultado = 42
+    retorna resultado
+  fim
+
+// Teste todas essas palavras com hover:
+// seja, se, então, senão, fim, para, cada, em, até, faça, retorna, exiba

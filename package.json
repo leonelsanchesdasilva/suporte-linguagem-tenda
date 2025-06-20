@@ -1,0 +1,134 @@
+{
+  "name": "suporte-linguagem-tenda",
+  "displayName": "Suporte à Linguagem Tenda",
+  "description": "Extensão completa para programar em Tenda - linguagem brasileira com syntax highlighting, autocompletar, snippets e mais",
+  "version": "1.0.1",
+  "publisher": "pduartes",
+  "author": "Peterson Duarte",
+  "license": "MIT",
+  "icon": "tenda_logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pduarte-dev/suporte-linguagem-tenda.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pduarte-dev/suporte-linguagem-tenda/issues"
+  },
+  "homepage": "https://github.com/pduarte-dev/suporte-linguagem-tenda#readme",
+  "keywords": [
+    "tenda", 
+    "linguagem-programacao", 
+    "programacao-brasileira",
+    "syntax-highlighting", 
+    "autocompletar",
+    "português", 
+    "brasileiro", 
+    "portugues",
+    "suporte-linguagem",
+    "snippets-codigo",
+    "iniciantes-programacao"
+  ],
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:tenda"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "tenda",
+        "aliases": [
+          "Tenda",
+          "tenda"
+        ],
+        "extensions": [
+          ".tenda"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "tenda",
+        "scopeName": "source.tenda",
+        "path": "./syntaxes/tenda.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "tenda",
+        "path": "./snippets/tenda.code-snippets"
+      }
+    ],
+    "commands": [
+      {
+        "command": "tenda.runFile",
+        "title": "Executar Arquivo Tenda",
+        "category": "Tenda",
+        "icon": "$(play)"
+      },
+      {
+        "command": "tenda.showInstallInstructions",
+        "title": "Como Instalar o Tenda",
+        "category": "Tenda"
+      },
+      {
+        "command": "tenda.openDocumentation",
+        "title": "Abrir Documentação",
+        "category": "Tenda"
+      },
+      {
+        "command": "tenda.openPlayground",
+        "title": "Abrir Playground Online",
+        "category": "Tenda"
+      }
+    ],
+    "menus": {
+      "editor/title/run": [
+        {
+          "when": "resourceExtname == .tenda",
+          "command": "tenda.runFile",
+          "group": "navigation"
+        }
+      ],
+      "editor/context": [
+        {
+          "when": "resourceExtname == .tenda",
+          "command": "tenda.runFile",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "tenda.runFile",
+          "when": "resourceExtname == .tenda"
+        },
+        {
+          "command": "tenda.showInstallInstructions"
+        },
+        {
+          "command": "tenda.openDocumentation"
+        },
+        {
+          "command": "tenda.openPlayground"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,75 @@
+// Exemplo de código Tenda
+
+// Declaração de variáveis
+seja nome = "Tenda"
+seja idade = 10
+seja lista = [1, 2, 3, 4, 5]
+seja dicionário = { "nome": "Tenda", "versão": 1.0 }
+
+// Exibir valores
+exiba("Olá, mundo!")
+exiba("Nome: " + nome)
+
+// Função simples
+seja soma(a, b) = a + b
+seja resultado = soma(10, 5)
+exiba("A soma é: " + resultado)
+
+// Função com bloco
+seja calculaMedia(lista) =
+  faça
+    seja total = 0
+    seja contador = 0
+    
+    para cada item em lista faça
+      total = total + item
+      contador = contador + 1
+    fim
+    
+    retorna total / contador
+  fim
+
+// Estrutura condicional
+se idade >= 18 então
+  exiba("Você é maior de idade.")
+senão
+  exiba("Você é menor de idade.")
+fim
+
+// Laço de repetição
+para cada i em 1 até 5 faça
+  exiba("Número: " + i)
+fim
+
+// Laço enquanto
+seja contador = 1
+enquanto contador <= 3 faça
+  exiba("Contador: " + contador)
+  contador = contador + 1
+fim
+
+// Função anônima
+seja dobra = função(x) -> x * 2
+seja valor_dobrado = dobra(5)
+exiba("Valor dobrado: " + valor_dobrado)
+
+// Trabalho com dicionários
+se dicionário tem "nome" então
+  exiba("O nome é: " + dicionário.nome)
+fim
+
+// Valores lógicos
+seja verdade = verdadeiro
+seja mentira = falso
+seja resultado_logico = verdade e não mentira
+
+// Data atual
+seja data_atual = Data.agora()
+exiba("Data atual: " + data_atual)
+
+// Diferentes tipos de números
+seja decimal = 42
+seja flutuante = 3.14
+seja binário = 0b1010_0101
+seja octal = 0o755
+seja hexadecimal = 0xDead_Beef

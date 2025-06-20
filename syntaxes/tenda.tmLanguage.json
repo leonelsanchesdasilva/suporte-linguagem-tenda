@@ -1,0 +1,141 @@
+{
+  "scopeName": "source.tenda",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#operators"
+    },
+    {
+      "include": "#functions"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "match": "//.*$",
+          "name": "comment.line.double-slash.tenda"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "match": "\\b(seja|exiba|função|faça|fim|retorna)\\b",
+          "name": "keyword.control.tenda"
+        },
+        {
+          "match": "\\b(se|então|senão)\\b",
+          "name": "keyword.control.conditional.tenda"
+        },
+        {
+          "match": "\\b(para|cada|em|enquanto|até|continua)\\b",
+          "name": "keyword.control.loop.tenda"
+        },
+        {
+          "match": "\\b(e|ou|não|tem|não tem|é|não é)\\b",
+          "name": "keyword.operator.logical.tenda"
+        },
+        {
+          "match": "\\b(verdadeiro|falso|Nada|infinito|NaN)\\b",
+          "name": "constant.language.tenda"
+        },
+        {
+          "match": "\\b(Data|Lista|Texto|Matemática|Arquivo|Programa|Saída)\\b",
+          "name": "support.type.tenda"
+        },
+        {
+          "match": "\\b(entrada|leia|valor|erro)\\b",
+          "name": "support.function.builtin.tenda"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.tenda",
+          "patterns": [
+            {
+              "match": "\\\\[nt\"\\\\]",
+              "name": "constant.character.escape.tenda"
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "match": "\\b0[bB][01_]+\\b",
+          "name": "constant.numeric.binary.tenda"
+        },
+        {
+          "match": "\\b0[oO][0-7_]+\\b",
+          "name": "constant.numeric.octal.tenda"
+        },
+        {
+          "match": "\\b0[xX][0-9A-Fa-f_]+\\b",
+          "name": "constant.numeric.hex.tenda"
+        },
+        {
+          "match": "\\b[0-9_]+\\.[0-9_]*([eE][+-]?[0-9_]+)?\\b",
+          "name": "constant.numeric.float.tenda"
+        },
+        {
+          "match": "\\b[0-9_]+([eE][+-]?[0-9_]+)?\\b",
+          "name": "constant.numeric.integer.tenda"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "match": "[+\\-*/%^]",
+          "name": "keyword.operator.arithmetic.tenda"
+        },
+        {
+          "match": "[<>=!]+",
+          "name": "keyword.operator.comparison.tenda"
+        },
+        {
+          "match": "=",
+          "name": "keyword.operator.assignment.tenda"
+        },
+        {
+          "match": "->",
+          "name": "keyword.operator.arrow.tenda"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "match": "\\b([a-zA-Z_][a-zA-Z0-9_]*)\\s*(?=\\()",
+          "name": "entity.name.function.tenda"
+        },
+        {
+          "match": "\\b(Data|Lista|Texto|Matemática|Arquivo|Programa|Saída)\\.(\\w+)",
+          "captures": {
+            "1": { "name": "support.type.tenda" },
+            "2": { "name": "support.function.method.tenda" }
+          }
+        }
+      ]
+    }
+  },
+  "fileTypes": ["tenda"],
+  "name": "Tenda"
+}

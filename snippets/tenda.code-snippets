@@ -1,0 +1,161 @@
+{
+  "Declaração de variável": {
+    "prefix": "seja",
+    "body": [
+      "seja ${1:nome} = ${2:valor}"
+    ],
+    "description": "Declara uma variável"
+  },
+  "Exibir valor": {
+    "prefix": "exiba",
+    "body": [
+      "exiba(${1:valor})"
+    ],
+    "description": "Exibe um valor no console"
+  },
+  "Estrutura condicional": {
+    "prefix": "se",
+    "body": [
+      "se ${1:condição} então",
+      "  ${2:// código}",
+      "fim"
+    ],
+    "description": "Estrutura condicional simples"
+  },
+  "Estrutura condicional completa": {
+    "prefix": "sesenao",
+    "body": [
+      "se ${1:condição} então",
+      "  ${2:// código se verdadeiro}",
+      "senão",
+      "  ${3:// código se falso}",
+      "fim"
+    ],
+    "description": "Estrutura condicional com alternativa"
+  },
+  "Laço para cada": {
+    "prefix": "paracada",
+    "body": [
+      "para cada ${1:item} em ${2:lista} faça",
+      "  ${3:// código}",
+      "fim"
+    ],
+    "description": "Laço de repetição para cada item"
+  },
+  "Laço enquanto": {
+    "prefix": "enquanto",
+    "body": [
+      "enquanto ${1:condição} faça",
+      "  ${2:// código}",
+      "fim"
+    ],
+    "description": "Laço de repetição condicional"
+  },
+  "Função simples": {
+    "prefix": "funcao",
+    "body": [
+      "seja ${1:nome}(${2:parâmetros}) = ${3:expressão}"
+    ],
+    "description": "Função simples de uma linha"
+  },
+  "Função com bloco": {
+    "prefix": "funcaobloco",
+    "body": [
+      "seja ${1:nome}(${2:parâmetros}) =",
+      "  faça",
+      "    ${3:// código}",
+      "    retorna ${4:valor}",
+      "  fim"
+    ],
+    "description": "Função com bloco de código"
+  },
+  "Função anônima": {
+    "prefix": "anonima",
+    "body": [
+      "seja ${1:nome} = função(${2:parâmetros}) -> ${3:expressão}"
+    ],
+    "description": "Função anônima"
+  },
+  "Lista": {
+    "prefix": "lista",
+    "body": [
+      "seja ${1:nome} = [${2:elementos}]"
+    ],
+    "description": "Cria uma lista"
+  },
+  "Dicionário": {
+    "prefix": "dict",
+    "body": [
+      "seja ${1:nome} = { \"${2:chave}\": ${3:valor} }"
+    ],
+    "description": "Cria um dicionário"
+  },
+  "Intervalo": {
+    "prefix": "intervalo",
+    "body": [
+      "seja ${1:nome} = ${2:início} até ${3:fim}"
+    ],
+    "description": "Cria um intervalo"
+  },
+  "Leia entrada": {
+    "prefix": "leia",
+    "body": [
+      "seja ${1:variável} = leia(\"${2:mensagem}\")"
+    ],
+    "description": "Lê entrada do usuário com mensagem"
+  },
+  "Entrada simples": {
+    "prefix": "entrada",
+    "body": [
+      "seja ${1:variável} = entrada()"
+    ],
+    "description": "Lê entrada do usuário"
+  },
+  "Tratamento de erro": {
+    "prefix": "trataerro",
+    "body": [
+      "seja resultado = ${1:função_que_pode_falhar}",
+      "",
+      "se resultado tem \"erro\" então",
+      "  exiba(\"Erro: \" + resultado.erro)",
+      "senão",
+      "  exiba(\"Sucesso: \" + resultado.valor)",
+      "fim"
+    ],
+    "description": "Padrão de tratamento de erro"
+  },
+  "Lista com operações": {
+    "prefix": "listaops",
+    "body": [
+      "seja ${1:lista} = [${2:elementos}]",
+      "seja tamanho = Lista.tamanho(${1:lista})",
+      "Lista.insira(${1:lista}, ${3:novo_valor})"
+    ],
+    "description": "Lista com operações básicas"
+  },
+  "Operações matemáticas": {
+    "prefix": "matematica",
+    "body": [
+      "seja resultado = Matemática.${1|absoluto,arredonda,raiz_quadrada,seno,cosseno|}(${2:número})"
+    ],
+    "description": "Operações matemáticas"
+  },
+  "Operações de texto": {
+    "prefix": "texto",
+    "body": [
+      "seja resultado = Texto.${1|tamanho,para_maiúsculas,para_minúsculas,contém|}(${2:texto})"
+    ],
+    "description": "Operações de texto"
+  },
+  "Verificar existência": {
+    "prefix": "tem",
+    "body": [
+      "se ${1:container} tem ${2:item} então",
+      "  ${3:// código se encontrou}",
+      "senão",
+      "  ${4:// código se não encontrou}",
+      "fim"
+    ],
+    "description": "Verifica se item existe"
+  }
+}

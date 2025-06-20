@@ -1,0 +1,162 @@
+// Exemplo completo da linguagem Tenda com todos os recursos
+
+// ====== ENTRADA E SAÍDA ======
+exiba("=== Teste de Entrada e Saída ===")
+seja nome = leia("Digite seu nome: ")
+seja idade_texto = entrada()
+
+// ====== TRATAMENTO DE ERRO ======
+seja conversao = Texto.para_número(idade_texto)
+
+se conversao tem "erro" então
+  exiba("Erro: idade inválida - " + conversao.erro)
+  seja idade = 0
+senão
+  seja idade = conversao.valor
+  exiba("Idade válida: " + idade)
+fim
+
+// ====== OPERADORES MATEMÁTICOS ======
+exiba("=== Operações Matemáticas ===")
+seja a = 10
+seja b = 3
+
+seja soma = a + b
+seja subtracao = a - b
+seja multiplicacao = a * b
+seja divisao = a / b
+seja resto = a % b
+seja potencia = a ^ b
+
+exiba("Soma: " + soma)
+exiba("Resto: " + resto)
+exiba("Potência: " + potencia)
+
+// ====== OPERADORES DE COMPARAÇÃO ======
+exiba("=== Comparações ===")
+seja maior = a > b
+seja igual = a é b
+seja diferente = a não é b
+
+exiba("É maior: " + maior)
+exiba("É diferente: " + diferente)
+
+// ====== FUNÇÕES MATEMÁTICAS ======
+exiba("=== Funções Matemáticas ===")
+seja numero = 16
+seja raiz = Matemática.raiz_quadrada(numero)
+seja absoluto = Matemática.absoluto(-5)
+seja pi_valor = Matemática.pi
+seja seno_90 = Matemática.seno(Matemática.pi / 2)
+
+exiba("Raiz de " + numero + ": " + raiz)
+exiba("Valor de PI: " + pi_valor)
+exiba("Seno de 90°: " + seno_90)
+
+// ====== OPERAÇÕES COM LISTAS ======
+exiba("=== Operações com Listas ===")
+seja lista = [1, 2, 3, 4, 5]
+seja tamanho = Lista.tamanho(lista)
+
+Lista.insira(lista, 6)
+seja novo_tamanho = Lista.tamanho(lista)
+
+exiba("Tamanho original: " + tamanho)
+exiba("Novo tamanho: " + novo_tamanho)
+
+// Verificar existência
+se lista tem 3 então
+  exiba("A lista contém o número 3")
+fim
+
+se lista não tem 10 então
+  exiba("A lista NÃO contém o número 10")
+fim
+
+// ====== OPERAÇÕES COM TEXTO ======
+exiba("=== Operações com Texto ===")
+seja texto = "Olá, Mundo!"
+seja tamanho_texto = Texto.tamanho(texto)
+seja maiuscula = Texto.para_maiúsculas(texto)
+seja minuscula = Texto.para_minúsculas(texto)
+
+exiba("Texto original: " + texto)
+exiba("Tamanho: " + tamanho_texto)
+exiba("Maiúscula: " + maiuscula)
+exiba("Minúscula: " + minuscula)
+
+// Verificar conteúdo
+se Texto.contém(texto, "Mundo") então
+  exiba("O texto contém 'Mundo'")
+fim
+
+// ====== DATA E HORA ======
+exiba("=== Data e Hora ===")
+seja agora = Data.agora()
+seja ano = Data.ano(agora)
+seja mes = Data.mês(agora)
+seja dia = Data.dia(agora)
+
+exiba("Data atual: " + agora)
+exiba("Ano: " + ano + ", Mês: " + mes + ", Dia: " + dia)
+
+// ====== VALORES ESPECIAIS ======
+exiba("=== Valores Especiais ===")
+seja verdade = verdadeiro
+seja mentira = falso
+seja nada = Nada
+seja inf = infinito
+
+exiba("Verdadeiro: " + verdade)
+exiba("Falso: " + mentira)
+exiba("Nada: " + nada)
+exiba("Infinito: " + inf)
+
+// ====== ESTRUTURAS COMPLEXAS ======
+exiba("=== Estruturas Complexas ===")
+
+// Função com tratamento de erro
+seja divide_seguro(dividendo, divisor) =
+  faça
+    se divisor é 0 então
+      retorna { "erro": "Divisão por zero não permitida" }
+    senão
+      retorna { "valor": dividendo / divisor }
+    fim
+  fim
+
+seja resultado = divide_seguro(10, 0)
+se resultado tem "erro" então
+  exiba("Erro na divisão: " + resultado.erro)
+senão
+  exiba("Resultado da divisão: " + resultado.valor)
+fim
+
+// ====== LAÇOS COM INTERVALOS ======
+exiba("=== Laços e Intervalos ===")
+para cada i em 1 até 5 faça
+  seja quadrado = i ^ 2
+  exiba("Quadrado de " + i + ": " + quadrado)
+fim
+
+// ====== DICIONÁRIOS COM VERIFICAÇÃO ======
+exiba("=== Dicionários ===")
+seja config = {
+  "nome": "Aplicação Tenda",
+  "versão": 1.0,
+  "debug": verdadeiro
+}
+
+se config tem "debug" e config.debug então
+  exiba("Modo debug ativado para: " + config.nome)
+fim
+
+// ====== ARQUIVO (exemplo conceitual) ======
+// seja conteudo = Arquivo.leia("exemplo.txt")
+// se conteudo tem "erro" então
+//   exiba("Erro ao ler arquivo: " + conteudo.erro)
+// senão
+//   exiba("Conteúdo do arquivo: " + conteudo.valor)
+// fim
+
+exiba("=== Fim dos testes ===")
