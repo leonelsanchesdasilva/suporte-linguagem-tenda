@@ -47,7 +47,8 @@
           "tenda"
         ],
         "extensions": [
-          ".tenda"
+          ".tenda",
+          ".tnd"
         ],
         "configuration": "./language-configuration.json"
       }
@@ -91,14 +92,14 @@
     "menus": {
       "editor/title/run": [
         {
-          "when": "resourceExtname == .tenda",
+          "when": "resourceLangId == tenda",
           "command": "tenda.runFile",
           "group": "navigation"
         }
       ],
       "editor/context": [
         {
-          "when": "resourceExtname == .tenda",
+          "when": "resourceExtname == tenda",
           "command": "tenda.runFile",
           "group": "navigation"
         }
@@ -106,7 +107,7 @@
       "commandPalette": [
         {
           "command": "tenda.runFile",
-          "when": "resourceExtname == .tenda"
+          "when": "resourceExtname == tenda"
         },
         {
           "command": "tenda.showInstallInstructions"
