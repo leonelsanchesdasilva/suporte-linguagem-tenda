@@ -4,7 +4,6 @@ export function activate(context: vscode.ExtensionContext) {
   const tendaCommands = [
     // Palavras-chave básicas
     { label: 'seja', documentation: 'Declara uma variável ou função.' },
-    { label: 'exiba', documentation: 'Exibe um valor no console.' },
     { label: 'função', documentation: 'Define uma função anônima.' },
     { label: 'faça', documentation: 'Inicia um bloco de código.' },
     { label: 'fim', documentation: 'Finaliza um bloco de código.' },
@@ -49,13 +48,10 @@ export function activate(context: vscode.ExtensionContext) {
     { label: 'Programa', documentation: 'Módulo com funções do programa.' },
     { label: 'Saída', documentation: 'Módulo para operações de saída.' },
     
-    // Funções de entrada/saída
+    // Funções embutidas
     { label: 'entrada', documentation: 'Lê uma linha da entrada padrão.' },
     { label: 'leia', documentation: 'Mostra uma mensagem e lê a entrada do usuário.' },
-    
-    // Palavras-chave de tratamento de erro
-    { label: 'valor', documentation: 'Chave usada em retornos de sucesso.' },
-    { label: 'erro', documentation: 'Chave usada em retornos de erro.' }
+    { label: 'exiba', documentation: 'Exibe um valor no console.' },
   ];
 
   // Autocomplete
