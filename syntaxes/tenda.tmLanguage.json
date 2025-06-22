@@ -136,6 +136,6 @@
       ]
     }
   },
-  "fileTypes": ["tenda"],
+  "fileTypes": ["tenda", "tnd"],
   "name": "Tenda"
 }
