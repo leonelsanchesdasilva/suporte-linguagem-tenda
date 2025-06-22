@@ -8,7 +8,6 @@ Esta extensão adiciona suporte à linguagem de programação **Tenda** no Visua
 - **Autocompletar** para palavras-chave e construções da linguagem
 - **Snippets** para estruturas comuns (condicionais, laços, funções)
 - **Hover** com documentação das palavras-chave
-- **Formatação automática** de código
 - **Suporte a comentários** com `//`
 
 ## Sintaxe Suportada
