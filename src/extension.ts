@@ -125,37 +125,98 @@ export function activate(context: vscode.ExtensionContext) {
   // Formatter
   context.subscriptions.push(
     vscode.languages.registerDocumentFormattingEditProvider('tenda', {
-      provideDocumentFormattingEdits(document: vscode.TextDocument) {
+      provideDocumentFormattingEdits(document) {
         const edits: vscode.TextEdit[] = [];
+
         let indentLevel = 0;
+        const headerRegex = /^seja\b.*\)\s*=\s*$/;
+        const combinedHeaderOpener = /^seja\b.*\)\s*=\s*faça\b.*$/;
+        const openerRegex = /\b(faça|então)\b/;
+
+        const withIndent = (txt: string, lvl = indentLevel) =>
+          '  '.repeat(lvl) + txt;
+
+        const maybeResetLeak = (nextTrimmed: string) => {
+          if (
+            indentLevel === 1 &&
+            nextTrimmed.length > 0 &&
+            !openerRegex.test(nextTrimmed) &&
+            nextTrimmed !== 'fim'
+          ) {
+            indentLevel = 0;
+          }
+        };
 
         for (let i = 0; i < document.lineCount; i++) {
           const line = document.lineAt(i);
-          let text = line.text.trim();
+          const trimmed = line.text.trim();
 
-          // Palavras que aumentam indentação
-          if (text.includes('faça') || text.includes('então') || text.includes('senão')) {
-            const newText = "  ".repeat(indentLevel) + text;
-            edits.push(vscode.TextEdit.replace(line.range, newText));
-            indentLevel++;
-          } 
-          // Palavras que diminuem indentação
-          else if (text === "fim") {
+          // Linha vazia
+          if (trimmed === '') {
+            edits.push(vscode.TextEdit.replace(line.range, ''));
+            continue;
+          }
+
+          // Antes de formatar, verifica e corrige possível vazamento
+          maybeResetLeak(trimmed);
+
+          // 1. Cabeço + abre bloco na mesma linha: "seja foo() = faça"
+          if (combinedHeaderOpener.test(trimmed)) {
+            // Divide em duas linhas: cabeçalho + "faça" indentado
+            const headerPart = trimmed.replace(/\s*faça\b.*$/, '').trimEnd();
+
+            const headerLine = withIndent(headerPart);
+            const openerLine = withIndent('faça', indentLevel + 1);
+
+            edits.push(
+              vscode.TextEdit.replace(
+                line.range,
+                `${headerLine}\n${openerLine}`
+              )
+            );
+
+            // +2 níveis (cabeçalho + bloco)
+            indentLevel += 2;
+
+            continue;
+          }
+
+          // 2. Fechador: "fim"
+          if (trimmed === 'fim') {
             indentLevel = Math.max(0, indentLevel - 1);
-            const newText = "  ".repeat(indentLevel) + text;
-            edits.push(vscode.TextEdit.replace(line.range, newText));
-          } 
-          // Linhas normais
-          else if (text.length > 0) {
-            const newText = "  ".repeat(indentLevel) + text;
-            if (newText !== line.text) {
-              edits.push(vscode.TextEdit.replace(line.range, newText));
-            }
+            edits.push(
+              vscode.TextEdit.replace(line.range, withIndent(trimmed))
+            );
+            continue;
+          }
+
+          // 3. Cabeçalho isolado: "seja foo() ="
+          if (headerRegex.test(trimmed)) {
+            edits.push(
+              vscode.TextEdit.replace(line.range, withIndent(trimmed))
+            );
+            indentLevel++; // virtual level
+            continue;
+          }
+
+          // 4. Abre bloco: "faça" ou "então"
+          if (openerRegex.test(trimmed)) {
+            edits.push(
+              vscode.TextEdit.replace(line.range, withIndent(trimmed))
+            );
+            indentLevel++;
+            continue;
+          }
+
+          // 5. Linha comum de código
+          const desired = withIndent(trimmed);
+          if (desired !== line.text) {
+            edits.push(vscode.TextEdit.replace(line.range, desired));
           }
         }
 
         return edits;
-      }
+      },
     })
   );
 
