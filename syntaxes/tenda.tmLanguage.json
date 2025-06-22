@@ -32,7 +32,7 @@
     "keywords": {
       "patterns": [
         {
-          "match": "\\b(seja|exiba|função|faça|fim|retorna)\\b",
+          "match": "\\b(seja|função|faça|fim|retorna)\\b",
           "name": "keyword.control.tenda"
         },
         {
@@ -56,7 +56,7 @@
           "name": "support.type.tenda"
         },
         {
-          "match": "\\b(entrada|leia|valor|erro)\\b",
+          "match": "\\b(entrada|exiba|leia)\\b",
           "name": "support.function.builtin.tenda"
         }
       ]
