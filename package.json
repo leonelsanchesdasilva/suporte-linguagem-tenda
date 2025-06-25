@@ -16,13 +16,13 @@
   },
   "homepage": "https://github.com/pduarte-dev/suporte-linguagem-tenda#readme",
   "keywords": [
-    "tenda", 
-    "linguagem-programacao", 
+    "tenda",
+    "linguagem-programacao",
     "programacao-brasileira",
-    "syntax-highlighting", 
+    "syntax-highlighting",
     "autocompletar",
-    "português", 
-    "brasileiro", 
+    "português",
+    "brasileiro",
     "portugues",
     "suporte-linguagem",
     "snippets-codigo",
@@ -47,7 +47,8 @@
           "tenda"
         ],
         "extensions": [
-          ".tenda"
+          ".tenda",
+          ".tnd"
         ],
         "configuration": "./language-configuration.json"
       }
@@ -74,7 +75,7 @@
       },
       {
         "command": "tenda.showInstallInstructions",
-        "title": "Como Instalar o Tenda",
+        "title": "Como Instalar a Tenda",
         "category": "Tenda"
       },
       {
@@ -91,14 +92,14 @@
     "menus": {
       "editor/title/run": [
         {
-          "when": "resourceExtname == .tenda",
+          "when": "resourceLangId == tenda",
           "command": "tenda.runFile",
           "group": "navigation"
         }
       ],
       "editor/context": [
         {
-          "when": "resourceExtname == .tenda",
+          "when": "resourceExtname == tenda",
           "command": "tenda.runFile",
           "group": "navigation"
         }
@@ -106,7 +107,7 @@
       "commandPalette": [
         {
           "command": "tenda.runFile",
-          "when": "resourceExtname == .tenda"
+          "when": "resourceExtname == tenda"
         },
         {
           "command": "tenda.showInstallInstructions"

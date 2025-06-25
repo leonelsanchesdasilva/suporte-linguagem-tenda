@@ -4,7 +4,6 @@ export function activate(context: vscode.ExtensionContext) {
   const tendaCommands = [
     // Palavras-chave básicas
     { label: 'seja', documentation: 'Declara uma variável ou função.' },
-    { label: 'exiba', documentation: 'Exibe um valor no console.' },
     { label: 'função', documentation: 'Define uma função anônima.' },
     { label: 'faça', documentation: 'Inicia um bloco de código.' },
     { label: 'fim', documentation: 'Finaliza um bloco de código.' },
@@ -49,13 +48,10 @@ export function activate(context: vscode.ExtensionContext) {
     { label: 'Programa', documentation: 'Módulo com funções do programa.' },
     { label: 'Saída', documentation: 'Módulo para operações de saída.' },
     
-    // Funções de entrada/saída
+    // Funções embutidas
     { label: 'entrada', documentation: 'Lê uma linha da entrada padrão.' },
     { label: 'leia', documentation: 'Mostra uma mensagem e lê a entrada do usuário.' },
-    
-    // Palavras-chave de tratamento de erro
-    { label: 'valor', documentation: 'Chave usada em retornos de sucesso.' },
-    { label: 'erro', documentation: 'Chave usada em retornos de erro.' }
+    { label: 'exiba', documentation: 'Exibe um valor no console.' },
   ];
 
   // Autocomplete
@@ -118,43 +114,6 @@ export function activate(context: vscode.ExtensionContext) {
         
         console.log(`Hover debug - Nenhum comando encontrado para: "${word}"`);
         return undefined;
-      }
-    })
-  );
-
-  // Formatter
-  context.subscriptions.push(
-    vscode.languages.registerDocumentFormattingEditProvider('tenda', {
-      provideDocumentFormattingEdits(document: vscode.TextDocument) {
-        const edits: vscode.TextEdit[] = [];
-        let indentLevel = 0;
-
-        for (let i = 0; i < document.lineCount; i++) {
-          const line = document.lineAt(i);
-          let text = line.text.trim();
-
-          // Palavras que aumentam indentação
-          if (text.includes('faça') || text.includes('então') || text.includes('senão')) {
-            const newText = "  ".repeat(indentLevel) + text;
-            edits.push(vscode.TextEdit.replace(line.range, newText));
-            indentLevel++;
-          } 
-          // Palavras que diminuem indentação
-          else if (text === "fim") {
-            indentLevel = Math.max(0, indentLevel - 1);
-            const newText = "  ".repeat(indentLevel) + text;
-            edits.push(vscode.TextEdit.replace(line.range, newText));
-          } 
-          // Linhas normais
-          else if (text.length > 0) {
-            const newText = "  ".repeat(indentLevel) + text;
-            if (newText !== line.text) {
-              edits.push(vscode.TextEdit.replace(line.range, newText));
-            }
-          }
-        }
-
-        return edits;
       }
     })
   );
